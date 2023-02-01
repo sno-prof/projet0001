@@ -79,15 +79,15 @@ public partial class MainPage : ContentPage
         for ( int compteur = 3; compteur <= 10000; compteur++)
         {
             //Je recherche un lien qui correspond à la case memoire nb
-            element = driver.FindElement(By.LinkText(nb.ToString()));
+           var element2 = driver.FindElement(By.LinkText(nb.ToString()));
             // je clique
-            element.Click();
+            element2.Click();
             // j'ajoute 1 à la case memoire
             nb++;
             // recuperer le texte
-            var monTexte = driver.FindElement(By.Name("result-stats"));
+            element = driver.FindElement(By.Id("result-stats"));
             // Tester le contenu pour savoir s'il contient Auchan
-            if(monTexte.Text.Contains("5"))
+            if(element.Text.Contains("5"))
                 {
                 break;
                 }
