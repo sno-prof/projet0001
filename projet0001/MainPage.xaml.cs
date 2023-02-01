@@ -67,34 +67,44 @@ public partial class MainPage : ContentPage
         // compteur++ A chaque passage dans la boucle , il ajoute 1
         // nb correspond à la case memoire  de la page en cours
         int nb = 3;
-        for ( int compteur = 1; compteur <= 10000; compteur++)
+        for (int compteur = 1; compteur <= 10000; compteur++)
         {
-            //Je recherche un lien qui correspond à la case memoire nb
-           var element2 = driver.FindElement(By.LinkText(nb.ToString()));
-            // je clique
-            element2.Click();
-            // j'ajoute 1 à la case memoire
-            nb++;
-            // recuperer le texte
-            element = driver.FindElement(By.Id("result-stats"));
-            // Tester le contenu pour savoir s'il contient Auchan
-            if(element.Text.Contains("Page 5"))
-                {
-                break;
-                }
-            // je veux recuperer tous les elements qui contiennent le Tag h3
-            var elements = driver.FindElements(By.TagName("h3"));
-            // je veux recuperer le texte de chaque Tag h3
-            // Etape  01 - créer une boucle
-            foreach (var monElement in elements)
+            // pour eviter les exceptions on utilise la commande try - catch
+            try
             {
-                // je mets le texte du h3 dans une case
-                string monTexte = monElement.Text;
-                // on recherche par un test le site "PC Portable ASUS - Top Achat"
 
-            } // je m'endors 3 secondes
-            Thread.Sleep(3000);
+                //Je recherche un lien qui correspond à la case memoire nb
+                var element2 = driver.FindElement(By.LinkText(nb.ToString()));
+                // je clique
+                element2.Click();
+                // j'ajoute 1 à la case memoire
+                nb++;
+                // recuperer le texte
+                element = driver.FindElement(By.Id("result-stats"));
+                // Tester le contenu pour savoir s'il contient Auchan
+                if (element.Text.Contains("Page 6"))
+                {
+                    break;
+                }
+                // je veux recuperer tous les elements qui contiennent le Tag h3
+                var elements = driver.FindElements(By.TagName("h3"));
+                // je veux recuperer le texte de chaque Tag h3
+                // Etape  01 - créer une boucle
+                foreach (var monElement in elements)
+                {
+                    // je mets le texte du h3 dans une case
+                    string monTexte = monElement.Text;
+                    // on recherche par un test le site "BACK TO SCHOOL 2022 - ASUS"
+                    if (monTexte.Equals("BACK TO SCHOOL 2022 - ASUS"))
+                    {
+                        monElement.Click();
+                        break;
+                    }
+                } // je m'endors 3 secondes
+                Thread.Sleep(3000);
+            }
+            catch (Exception ex) { }
         }
-        
+
     }
 }
