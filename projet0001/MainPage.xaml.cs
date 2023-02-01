@@ -76,7 +76,7 @@ public partial class MainPage : ContentPage
         // compteur++ A chaque passage dans la boucle , il ajoute 1
         // nb correspond à la case memoire  de la page en cours
         int nb = 3;
-        for ( int compteur = 3; compteur <= 10000; compteur++)
+        for ( int compteur = 1; compteur <= 10000; compteur++)
         {
             //Je recherche un lien qui correspond à la case memoire nb
            var element2 = driver.FindElement(By.LinkText(nb.ToString()));
