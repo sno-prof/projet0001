@@ -55,15 +55,6 @@ public partial class MainPage : ContentPage
         element.Submit();
         // la methode dort pendant 3 secondes
         Thread.Sleep(3000);
-        // je veux recuperer tous les elements qui contiennent le Tag h3
-        var elements = driver.FindElements(By.TagName("h3"));
-        // je veux recuperer le texte de chaque Tag h3
-        // Etape  01 - créer une boucle
-        foreach (var monElement in elements)
-        {
-            // je mets le texte du h3 dans une case
-            string monTexte = monElement.Text;
-        }
         // je desire aller sur la page 2
         element = driver.FindElement(By.LinkText("2"));
         // je clique sur le lien 2
@@ -91,7 +82,15 @@ public partial class MainPage : ContentPage
                 {
                 break;
                 }
-            // je m'endors 3 secondes
+            // je veux recuperer tous les elements qui contiennent le Tag h3
+            var elements = driver.FindElements(By.TagName("h3"));
+            // je veux recuperer le texte de chaque Tag h3
+            // Etape  01 - créer une boucle
+            foreach (var monElement in elements)
+            {
+                // je mets le texte du h3 dans une case
+                string monTexte = monElement.Text;
+            } // je m'endors 3 secondes
             Thread.Sleep(3000);
         }
         
