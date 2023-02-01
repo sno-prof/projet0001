@@ -90,6 +90,8 @@ public partial class MainPage : ContentPage
             {
                 // je mets le texte du h3 dans une case
                 string monTexte = monElement.Text;
+                // on recherche par un test le site "PC Portable ASUS - Top Achat"
+
             } // je m'endors 3 secondes
             Thread.Sleep(3000);
         }
