@@ -87,7 +87,7 @@ public partial class MainPage : ContentPage
             // recuperer le texte
             element = driver.FindElement(By.Id("result-stats"));
             // Tester le contenu pour savoir s'il contient Auchan
-            if(element.Text.Contains("5"))
+            if(element.Text.Contains("Page 5"))
                 {
                 break;
                 }
