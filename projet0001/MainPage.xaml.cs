@@ -41,7 +41,7 @@ public partial class MainPage : ContentPage
         // Creer un objet chromedriver
         IWebDriver driver = new ChromeDriver(@"c:\Drivers\Web");
         // La methode lance le navigateur à l'adresse google.com
-        driver.Navigate().GoToUrl("https://google.com");
+        driver.Navigate().GoToUrl("https://ldlc.com");
         // la methode dort pendant 5 secondes
         Thread.Sleep(5000);
         // la methode trouve sur la page l'élément défini (ici le bouton Accepter
