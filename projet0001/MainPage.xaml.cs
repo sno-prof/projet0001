@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace projet0001;
 
@@ -117,7 +118,7 @@ public partial class MainPage : ContentPage
         // On parcours le tableau contenant toutes les lignes
         foreach (string ligne in lignes)
         {
-            string maligne = ligne;
+            string[] mots = ligne.Split(';');
         }
     }
 }
