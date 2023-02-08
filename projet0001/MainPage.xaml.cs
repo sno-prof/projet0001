@@ -111,6 +111,12 @@ public partial class MainPage : ContentPage
 
     public void LireUnFichierPourSelenium()
     {
+        // Creer un objet chromedriver
+        IWebDriver driver = new ChromeDriver(@"c:\Drivers\Web");
+        // La methode lance le navigateur à l'adresse google.com
+        driver.Navigate().GoToUrl("https://google.com");
+        // la methode dort pendant 5 secondes
+        Thread.Sleep(5000);
         // On definit le chemin du fichier à lire
         string cheminDuFichier = @"\\nas-sio1\donnees\profs\tlg\Documents\selenium.txt";
         // On lit l'ensemble des lignes du fichiers
@@ -118,7 +124,13 @@ public partial class MainPage : ContentPage
         // On parcours le tableau contenant toutes les lignes
         foreach (string ligne in lignes)
         {
+            // on découpe chaque mot de la ligne séparé par un ;
             string[] mots = ligne.Split(';');
+            // dans le tableau mots, le premier mot est le mot 0
+            string mot0 = mots[0];
+            string mot1 = mots[1];
+
+
         }
     }
 }
