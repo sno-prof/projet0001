@@ -20,7 +20,7 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        this.CliquerSurUnBouton();
+        this.LireUnFichierPourSelenium();
     }
 
     public void LancerNavigateur()
@@ -106,5 +106,18 @@ public partial class MainPage : ContentPage
             catch (Exception ex) { }
         }
 
+    }
+
+    public void LireUnFichierPourSelenium()
+    {
+        // On definit le chemin du fichier à lire
+        string cheminDuFichier = @"\\nas-sio1\donnees\profs\tlg\Documents\selenium.txt";
+        // On lit l'ensemble des lignes du fichiers
+        string[] lignes = File.ReadAllLines(cheminDuFichier);
+        // On parcours le tableau contenant toutes les lignes
+        foreach (string ligne in lignes)
+        {
+            string maligne = ligne;
+        }
     }
 }
