@@ -148,11 +148,16 @@ public partial class MainPage : ContentPage
 
             // la methode dort pendant 5 secondes
             Thread.Sleep(5000);
-
+            //creation d'un objet IWebElement 
             IWebElement prix = null;
+            // la methode trouve sur la page l'élément défini (ici le prix)
+            
+            // 2 cas de figure
+            // 1- il n'y a qu'un produit 
+            // 2 - il y a plusieurs produits
 
-            // la methode trouve sur la page l'élément défini (ici le prix si plusieurs produits)
-            // 
+            // On remarque que si le path n'est pas trouvé la methode crashe
+            // Pour eviter le crash on utilise le TRY  CATCH
             try 
             {
                  prix = driver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div[1]/div/div[2]/div[2]/ul/li[1]/div[2]/div[4]/div/div"));
@@ -163,10 +168,19 @@ public partial class MainPage : ContentPage
 
             }
 
-
-
-            //recuperation du prix du produit
+            //recuperation du prix du produit dans l'attribut res
             string res = prix.Text;
+
+            if (mot1.Contains("."))
+            { 
+                mot1 = mot1.Replace(".", ",");
+                res.Replace('€', ',');
+            }
+            else 
+            {
+                res.Replace("€", ",");
+            }
+
         }
     }
 }
