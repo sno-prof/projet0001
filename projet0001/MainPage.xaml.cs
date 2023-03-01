@@ -1,7 +1,7 @@
-﻿using Android.Text;
+﻿
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace projet0001;
 
@@ -157,18 +157,12 @@ public partial class MainPage : ContentPage
             {
                  prix = driver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div[1]/div/div[2]/div[2]/ul/li[1]/div[2]/div[4]/div/div"));
             }
-            catch(InvalidCastException e) 
-            { 
-
-            }
-            try
+            catch(NoSuchElementException ) 
             {
                 prix = driver.FindElement(By.XPath("/html/body/div[4]/div[2]/div[2]/div[3]/aside/div[1]/div\r\n"));
-            }
-            catch (InvalidCastException e)
-            {
 
             }
+
 
 
             //recuperation du prix du produit
