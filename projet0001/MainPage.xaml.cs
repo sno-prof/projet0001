@@ -115,6 +115,7 @@ public partial class MainPage : ContentPage
         IWebDriver driver = new ChromeDriver(@"c:\Drivers\Web");
         // La methode lance le navigateur à l'adresse google.com
         driver.Navigate().GoToUrl("https://ldlc.com");
+
         // la methode dort pendant 5 secondes
         Thread.Sleep(5000);
         // On definit le chemin du fichier à lire
@@ -132,12 +133,24 @@ public partial class MainPage : ContentPage
 
             // la methode trouve sur la page l'élément défini (ici le bouton Accepter
             var element = driver.FindElement(By.XPath("/html/body/header/div[2]/div/div/form/div/div[2]/div[1]/input"));
-            // je saisis le texte que je desire rechercher
-            element.SendKeys(mot0);
-            // La methode simule un click sur le bouton
-            element.Submit();
+            // je nettoie la zone de saisie
+            element.Clear();
             // la methode dort pendant 5 secondes
             Thread.Sleep(5000);
+            // je saisis le texte que je desire rechercher
+            element.SendKeys(mot0);
+            // la methode dort pendant 5 secondes
+            Thread.Sleep(5000);
+            // La methode simule un click sur le bouton
+            element.Submit();
+            driver.Manage().Window.FullScreen();
+
+            // la methode dort pendant 5 secondes
+            Thread.Sleep(5000);
+
+            // la methode trouve sur la page l'élément défini (ici le prix)
+            var prix = driver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div[1]/div/div[2]/div[2]/ul/li[1]/div[2]/div[4]/div/div"));
+
 
         }
     }
