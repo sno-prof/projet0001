@@ -3,6 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 
+
 namespace projet0001;
 
 public partial class MainPage : ContentPage
@@ -122,7 +123,9 @@ public partial class MainPage : ContentPage
         // On definit le chemin du fichier à lire
         string cheminDuFichier = @"\\nas-sio1\donnees\profs\tlg\Documents\selenium.txt";
         // On lit l'ensemble des lignes du fichiers
-        string[] lignes = File.ReadAllLines(cheminDuFichier);
+        string[] lignes = System.IO.File.ReadAllLines(cheminDuFichier);
+        // Creation du fichier contenant les resultats
+        using StreamWriter writer = System.IO.File.CreateText(@"\\nas-sio1\donnees\profs\tlg\Documents\seleniumResultat.txt");
         // On parcours le tableau contenant toutes les lignes
         foreach (string ligne in lignes)
         {
@@ -171,14 +174,40 @@ public partial class MainPage : ContentPage
             //recuperation du prix du produit dans l'attribut res
             string res = prix.Text;
 
+            // formattage des prix
+            // mot1 correspond au prix de mon magasin
+            // res correpond au prix du site web
+
             if (mot1.Contains("."))
             { 
                 mot1 = mot1.Replace(".", ",");
-                res.Replace('€', ',');
+                res = res.Replace('€', ',');
             }
             else 
             {
-                res.Replace("€", ",");
+                res = res.Replace("€", ",");
+            }
+
+            // on compare les deux prix
+
+            if (double.Parse(mot1) > double.Parse(res))
+            {
+                double diff = double.Parse(mot1) - double.Parse(res);
+                writer.WriteLine("le produit " + mot0 + " est plus cher de "+ diff.ToString()+ " euros chez nous ("+mot1+ " - "+res+")");
+                // le produit XXX est plus cher de 000 euros chez nous ( xxx euros - xxx euros)
+            }
+
+            else if (double.Parse(mot1) == double.Parse(res))
+            {
+                writer.WriteLine("aussi cher");
+                // le produit XXX est aussi cher  ( xxx euros - xxx euros)
+
+            }
+
+            {
+                writer.WriteLine("moins cher");
+                // le produit XXX est moins cher de 000 euros chez nous ( xxx euros - xxx euros)
+
             }
 
         }
