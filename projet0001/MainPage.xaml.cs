@@ -192,6 +192,7 @@ public partial class MainPage : ContentPage
 
             if (double.Parse(mot1) > double.Parse(res))
             {
+                // calcul de la difference de prix
                 double diff = double.Parse(mot1) - double.Parse(res);
                 writer.WriteLine("le produit " + mot0 + " est plus cher de "+ diff.ToString()+ " euros chez nous ("+mot1+ " - "+res+")");
                 // le produit XXX est plus cher de 000 euros chez nous ( xxx euros - xxx euros)
