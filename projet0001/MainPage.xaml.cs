@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Android.Text;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -148,9 +149,28 @@ public partial class MainPage : ContentPage
             // la methode dort pendant 5 secondes
             Thread.Sleep(5000);
 
-            // la methode trouve sur la page l'élément défini (ici le prix)
-            var prix = driver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div[1]/div/div[2]/div[2]/ul/li[1]/div[2]/div[4]/div/div"));
-            
+            IWebElement prix = null;
+
+            // la methode trouve sur la page l'élément défini (ici le prix si plusieurs produits)
+            // 
+            try 
+            {
+                 prix = driver.FindElement(By.XPath("/html/body/div[4]/div/div[3]/div[1]/div/div[2]/div[2]/ul/li[1]/div[2]/div[4]/div/div"));
+            }
+            catch(InvalidCastException e) 
+            { 
+
+            }
+            try
+            {
+                prix = driver.FindElement(By.XPath("/html/body/div[4]/div[2]/div[2]/div[3]/aside/div[1]/div\r\n"));
+            }
+            catch (InvalidCastException e)
+            {
+
+            }
+
+
             //recuperation du prix du produit
             string res = prix.Text;
         }
